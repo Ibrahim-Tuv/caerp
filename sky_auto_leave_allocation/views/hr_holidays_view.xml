@@ -1,0 +1,117 @@
+<odoo>
+	<!--  Extended search view of employee -->
+        <record id="hr_leave_search_view_inherit" model="ir.ui.view">
+        <field name="name">hr.leave.search.extended</field>
+        <field name="model">hr.leave.allocation</field>
+        <field name="inherit_id" ref="hr_holidays.view_hr_leave_allocation_filter"/>
+        <field name="arch" type="xml">
+        	<xpath expr="//group" position="inside">
+        		<filter name="holiday_type" string="Holiday Type" context="{'group_by':'holiday_type'}"/>
+        	</xpath>
+        </field>
+        </record>
+
+
+    <!-- Form view of Automatic Leave Allocations -->
+    <record id="view_auto_leave_alloc_form" model="ir.ui.view">
+        <field name="name">view.auto.leave.alloc.form</field>
+        <field name="model">automatic.leave.allocation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="alloc_leaves" string="Allocate" type="object"/>
+                </header>
+                <sheet>
+                    <h1><field name="name" colspan="4" required="1"/></h1>
+                    <group name="grp_main" colspan="4" col="4">
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                        <field name="leave_type_id" required="1" domain="[('allocation_type','!=','no')]"/>
+                        <field name="type" required="1"/>
+                        <field name="last_alloc_date" readonly="1"/>
+                        <field name="next_alloc_date" readonly="1"/>
+                        <field name="type_request_unit" invisible="1"/>
+                        <field name="alloc_by" widget="radio" required="1"/>
+                        <field name="no_of_days" attrs="{'invisible':[('type_request_unit', '=', 'hour')]}"/>
+                        <field name="no_of_hours" attrs="{'invisible':[('type_request_unit', '!=', 'hour')]}"/>
+                        <field name="company_id" attrs="{'invisible':[('alloc_by', '!=', 'by_company')]}" required="1"/>
+                    </group>
+                    <notebook>
+                        <page name="pg_emp" string="Employees" attrs="{'invisible':[('alloc_by','!=','by_emp')]}">
+                            <field name="emp_ids" colspan="4">
+                            </field>
+                        </page>
+                        <page name="pg_dept" string="Departments" attrs="{'invisible':[('alloc_by','!=','by_dept')]}">
+                            <field name="dept_ids" colspan="4"/>
+                        </page>
+                        <page name="pg_tag" string="Tags" attrs="{'invisible':[('alloc_by','!=','by_tag')]}">
+                            <field name="tag_ids" colspan="4"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree view of Automatic Leave Allocations -->
+    <record id="view_auto_leave_alloc_tree" model="ir.ui.view">
+        <field name="name">view.auto.leave.alloc.tree</field>
+        <field name="model">automatic.leave.allocation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="leave_type_id"/>
+                <field name="type"/>
+                <field name="alloc_by"/>
+                <field name="last_alloc_date"/>
+                <field name="next_alloc_date"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search view of Automatic Leave Allocation -->
+    <record id="view_auto_leave_alloc_search" model="ir.ui.view">
+        <field name="name">view.auto.leave.alloc.search</field>
+        <field name="model">automatic.leave.allocation</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="leave_type_id"/>
+                <field name="type"/>
+                <field name="alloc_by"/>
+                <field name="last_alloc_date"/>
+                <filter name="fil_type_full" string="Full" domain="[('type','=','full')]"/>
+                <filter name="fil_type_prorata" string="Pro-Rata" domain="[('type','=','prorata')]"/>
+                <filter name="fil_alloc_by_emp" string="Allocation By Employee"
+                        domain="[('alloc_by','=','by_emp')]"/>
+                <filter name="fil_alloc_by_dept" string="Allocation By Department"
+                        domain="[('alloc_by','=','by_dept')]"/>
+                <filter name="fil_alloc_by_tag" string="Allocation By Tags"
+                        domain="[('alloc_by','=','by_tag')]"/>
+                <filter name="fil_alloc_by_comp" string="Allocation By Company"
+                        domain="[('alloc_by','=','by_company')]"/>
+                <filter name="grp_by_leave_type" string="Leave Type"
+                        domain="[]" context="{'group_by':'leave_type_id'}"/>
+                <filter name="grp_by_type" string="Type"
+                        domain="[]" context="{'group_by':'type'}"/>
+                <filter name="grp_by_alloc_by" string="Allocation By"
+                        domain="[]" context="{'group_by':'alloc_by'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action of Automatic Leave Allocation -->
+    <record id="action_auto_leave_alloc" model="ir.actions.act_window">
+        <field name="name">Automatic Leave Allocation</field>
+        <field name="res_model">automatic.leave.allocation</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu for Automatic Leave Allocation -->
+    <menuitem id="menu_auto_leave_alloc"
+              action="action_auto_leave_alloc"
+              parent="hr_holidays.menu_hr_holidays_configuration"
+              groups="hr_holidays.group_hr_holidays_manager,hr_holidays.group_hr_holidays_user"/>
+
+</odoo>

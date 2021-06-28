@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.actions.act_window" id="action_list_my_tuv_attendance">
+        <field name="name">My Attendance</field>
+        <field name="res_model">hr.attendance</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record model="ir.ui.view" id="courses_tree_view">
+        <field name="name">courses.tree</field>
+        <field name="model">hr.attendance</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <tree string="My Attendance">
+                <field name="employee_id"/>
+                <field name="check_in"/>
+                <field name="check_out"/>
+                <field name="worked_hours"/>
+
+            </tree>
+        </field>
+    </record>
+
+
+    <menuitem id="menu_my_tuv_attendance" name="My Attendance" parent="hr_attendance.menu_hr_attendance_root" sequence="99"
+              action="action_list_my_tuv_attendance"/>
+
+</odoo>

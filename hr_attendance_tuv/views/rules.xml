@@ -1,0 +1,22 @@
+<!--
+<odoo>
+
+    <record id="ir.rule" model="my_tuv_attendance_rule">
+        <field name="name">My Attendance Rule</field>
+        <field name="model_id" ref="hr_attendance"/>
+        <field name="global" eval="True"/>
+        <field name="groups" eval="[(4, ref('hr_attendance_tuv.group_user'))]"/>
+        <field name="domain_force">
+
+            [('employee_id.user_id','=',user.id)]
+        </field>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_wite" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+
+    </record>
+
+
+</odoo>
+

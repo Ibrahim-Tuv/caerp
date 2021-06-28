@@ -1,0 +1,15 @@
+<odoo>
+
+    <!-- Scheduler to allocate automatic leaves -->
+    <record id="auto_leave_alloc_cron" model="ir.cron">
+        <field name="name">Automatic Leave Allocation</field>
+        <field name="model_id" ref="model_automatic_leave_allocation"/>
+        <field name="state">code</field>
+        <field name="code">model._auto_alloc_leaves()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="True"/>
+    </record>
+
+</odoo>
