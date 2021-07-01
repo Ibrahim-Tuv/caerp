@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="pmo_tuv_agile.list">
+      <field name="name">pmo_tuv_agile list</field>
+      <field name="model">pmo_tuv_agile.pmo_tuv_agile</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="pmo_tuv_agile.action_window">
+      <field name="name">pmo_tuv_agile window</field>
+      <field name="res_model">pmo_tuv_agile.pmo_tuv_agile</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="pmo_tuv_agile.action_server">
+      <field name="name">pmo_tuv_agile server</field>
+      <field name="model_id" ref="model_pmo_tuv_agile_pmo_tuv_agile"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="pmo_tuv_agile" id="pmo_tuv_agile.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="pmo_tuv_agile.menu_1" parent="pmo_tuv_agile.menu_root"/>
+    <menuitem name="Menu 2" id="pmo_tuv_agile.menu_2" parent="pmo_tuv_agile.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="pmo_tuv_agile.menu_1_list" parent="pmo_tuv_agile.menu_1"
+              action="pmo_tuv_agile.action_window"/>
+    <menuitem name="Server to list" id="pmo_tuv_agile" parent="pmo_tuv_agile.menu_2"
+              action="pmo_tuv_agile.action_server"/>
+-->
+  </data>
+</odoo>

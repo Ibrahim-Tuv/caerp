@@ -1,0 +1,45 @@
+<odoo>
+    <record model="ir.actions.act_window" id="action_list_pmo_projects">
+        <field name="name">PMO Projects</field>
+        <field name="res_model">project.project</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.ui.view" id="pmo_project_tree_view">
+        <field name="name">project.tree</field>
+        <field name="model">project.project</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <tree string="Projects  list">
+                <field name="name"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="pmo_project_form_view">
+        <field name="name">project.form</field>
+        <field name="model">project.project</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <form string="Project form">
+
+                <sheet>
+                    <group>
+                        <field name="name"/>
+
+
+                    </group>
+
+
+                </sheet>
+
+
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_pmo_project_agile" parent="menu_pmo_config_agile" name="Project" sequence="5"
+              action="action_list_pmo_projects"/>
+
+</odoo>

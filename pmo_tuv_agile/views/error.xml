@@ -1,0 +1,46 @@
+<odoo>
+    <record model="ir.actions.act_window" id="action_list_pmo_errors">
+        <field name="name">PMO Helpdesk Error</field>
+        <field name="res_model">project.error</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.ui.view" id="pmo_error_tree_view">
+        <field name="name">error.tree</field>
+        <field name="model">project.error</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <tree string="Projects Error list">
+                <field name="name"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="pmo_error_form_view">
+        <field name="name">error.form</field>
+        <field name="model">project.error</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <form string="Error form">
+
+                <sheet>
+                    <group>
+                        <field name="name"/>
+
+
+                    </group>
+
+
+                </sheet>
+
+
+            </form>
+        </field>
+    </record>
+    <menuitem id="menu_pmo_config_agile" parent="menu_pmo_agile" name="Configuration" sequence="99"/>
+    <menuitem id="menu_pmo_error_agile" parent="menu_pmo_config_agile" name="Help Desk Error" sequence="70"
+              action="action_list_pmo_errors"/>
+
+
+</odoo>

@@ -1,0 +1,54 @@
+<odoo>
+    <record model="ir.actions.act_window" id="action_list_pmo_backlog">
+        <field name="name">PMO Backlog</field>
+        <field name="res_model">project.backlog</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <record model="ir.ui.view" id="pmo_backlog_tree_view">
+        <field name="name">backlog.tree</field>
+        <field name="model">project.backlog</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <tree string="Projects Backlog list">
+                <field name="name"/>
+                <field name="assigned_date"/>
+                <field name="deadline"/>
+                <field name="project_id"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="pmo_backlog_form_view">
+        <field name="name">backlog.form</field>
+        <field name="model">project.backlog</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <form string="Idea form">
+
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="assigned_by"/>
+                        <field name="assigned_date"/>
+                        <field name="deadline"/>
+                        <field name="project_id"/>
+
+                    </group>
+
+
+                </sheet>
+
+
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_pmo_backlog_agile" parent="menu_pmo_agile" name="TUV PMO Agile Backlog" sequence="70"
+              action="action_list_pmo_backlog"/>
+
+</odoo>
+

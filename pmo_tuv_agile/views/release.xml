@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record model="ir.actions.act_window" id="action_list_pmo_release">
+        <field name="name">PMO Release</field>
+        <field name="res_model">project.release</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="pmo_releases_tree_view">
+        <field name="name">release.tree</field>
+        <field name="model">project.release</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <tree string="Projects release list">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="project_id"/>
+
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="pmo_releases_form_view">
+        <field name="name">release.form</field>
+        <field name="model">project.release</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <form string="Idea form">
+
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="date"/>
+                        <field name="project_id"/>
+                    </group>
+
+
+                </sheet>
+
+
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_pmo_agile" name="TUV PMO" sequence="60"
+              action="action_list_pmo_release"/>
+    <menuitem id="menu_pmo_release_agile" name="Project Releases" sequence="60" parent="menu_pmo_agile"
+              action="action_list_pmo_release"/>
+
+</odoo>
+

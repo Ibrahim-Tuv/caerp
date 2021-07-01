@@ -1,0 +1,72 @@
+<odoo>
+    <record model="ir.actions.act_window" id="action_list_pmo_ticket">
+        <field name="name">PMO Help Desk Tickets</field>
+        <field name="res_model">project.ticket</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="pmo_ticket_tree_view">
+        <field name="name">tiecket.tree</field>
+        <field name="model">project.ticket</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+            <tree string="Projects Ticket list">
+                <field name="error_id"/>
+                <field name="description"/>
+                <field name="create_date"/>
+                <field name="create_uid"/>
+                <field name="status"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="pmo_ticket_form_view">
+        <field name="name">ticket.form</field>
+        <field name="model">project.ticket</field>
+        <field name="priority" eval="16"/>
+        <field name="arch" type="xml">
+
+            <form string="Idea form">
+
+                <sheet>
+                    <header>
+                        <field name="status" widget="statusbar"/>
+                        <button name="set_ticket_to_solved" string="Set Ticket Solved" type="object"
+                                class="oe_highlight"
+                                attrs="{('invisible'):[('status' , '=' , 'solved' )]}"/>
+                        <button name="set_ticket_to_closed" string="Set Ticket Closed" type="object"
+                                class="oe_highlight"
+                                attrs="{'invisible':[('status' , '=' , 'closed' )]}"/>
+
+
+                    </header>
+                    <widget name="web_ribbon" text="Closed" bg_color="bg-danger"
+                            attrs="{'invisible':[('status' ,'!=','closed')]}"/>
+                    <widget name="web_ribbon" text="Solved" bg_color="bg-success"
+                            attrs="{'invisible':[('status' ,'!=','solved')]}"/>
+
+                    <group>
+                        <group>
+                            <field name="error_id"/>
+                            <field name="description"/>
+
+
+                        </group>
+
+                    </group>
+
+
+                </sheet>
+
+
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="menu_pmo_tickets_agile" parent="menu_pmo_agile" name="Help Desk Tickets" sequence="70"
+              action="action_list_pmo_ticket"/>
+
+
+</odoo>
