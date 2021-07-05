@@ -28,6 +28,7 @@
         <field name="priority" eval="16"/>
         <field name="arch" type="xml">
 
+
             <form string="Idea form">
 
                 <sheet>

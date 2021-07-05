@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <record id="hr_leave_allocation_view_form_manager_inherit" model="ir.ui.view">
+        <field name="name">hr.leave.allocation.view.form.manager.inherit</field>
+        <field name="model">hr.leave.allocation</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_allocation_view_form_manager"/>
+        <field name="arch" type="xml">
+            <field name="employee_id" position="after">
+                <field name="allocation_at" widget="radio" attrs="{'invisible': [('allocation_type', '!=', 'accrual')]}"/>
+<!--                groups="hr_holidays.group_hr_holidays_manager"/>-->
+            </field>
+        </field>
+    </record>
+
+</odoo>

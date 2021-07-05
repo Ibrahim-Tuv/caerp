@@ -26,6 +26,8 @@
     'data': [
         'views/security.xml',
         'security/ir.model.access.csv',
+        'views/rules.xml',
+        'views/tickets.xml',
         'views/views.xml',
         'views/release.xml',
         'views/backlog.xml',

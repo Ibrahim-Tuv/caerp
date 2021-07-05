@@ -11,6 +11,8 @@
         <field name="model">project.backlog</field>
         <field name="priority" eval="16"/>
         <field name="arch" type="xml">
+
+
             <tree string="Projects Backlog list">
                 <field name="name"/>
                 <field name="assigned_date"/>
