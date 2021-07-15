@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employe_order_form" model="ir.ui.view">
+        <field name="name">employe.order.form</field>
+        <field name="model">employe.order</field>
+        <field name="arch" type="xml">
+            <form string ="Monthly Attendance Report">
+                 <sheet>
+                    <group>
+                         <field name="month" required='1'/>
+                         <field name="year" required='1'/>
+                   </group>
+                   <footer>
+                     <button string="Print" name="action_print" type='object' class="btn-primary"/>
+                    <button string="Cancel" special="cancel" />  
+                </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+      <record id="action_employe_order" model="ir.actions.act_window">
+          <field name="name">Monthly Attendance Report</field>
+          <field name="res_model">employe.order</field>
+
+          <field name="view_mode">form</field>
+          <field name="target">new</field>
+          <field name="view_id" ref="view_employe_order_form"/>
+    </record>
+
+     <menuitem id="main_menu_employe_order"
+            name="Reporting"
+            parent="hr.menu_hr_root"
+            sequence="98"/>
+
+     <menuitem id="sub_menu_employee_order"
+           name="Monthly Attendance Report"
+           parent='main_menu_employe_order'
+           action="action_employe_order"/>
+</odoo>

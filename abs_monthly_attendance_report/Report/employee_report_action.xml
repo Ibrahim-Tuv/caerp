@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <data>
+        <record id="paperformat_lowmargin" model="report.paperformat">
+            <field name="name">European A4 low margin</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">60</field>
+            <field name="margin_bottom">23</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">4</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">40</field>
+            <field name="dpi">90</field>
+       </record>
+           <report id="maintenance_request_report"
+                string="Maintenance "
+                model="employe.order" 
+                report_type="qweb-pdf"
+                file="abs_monthly_attendance_report.emoloyee_report" 
+                name="abs_monthly_attendance_report.emoloyee_report"
+                print_report_name="'Attendance Report Of  - %s,%s' % (object.month,object.year)"/>
+             <record id="abs_monthly_attendance_report.maintenance_request_report" model="ir.actions.report">
+                <field name="paperformat_id" ref="abs_monthly_attendance_report.paperformat_lowmargin" />
+           </record>
+    </data>
+</odoo>
